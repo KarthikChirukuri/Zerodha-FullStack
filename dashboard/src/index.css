@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.Menu-Container a{
+  margin-right: 20px;
+  color: black;
+  text-decoration: none;
+}
+
+.topbar-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 30px 10px 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.indices-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 500px;
+  border-right: 2px solid #8a8989;
+}
+
+.nifty, .sensex {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.Menu-Container {
+  display: flex;
+  gap: 15px;
+}
+
+.watchlist-container {
+  width: 530px;           
+  min-width: 450px;       
+  border-right: 1px solid #eee; 
+  padding: 20px 40px;
+  height: 100%;
+  box-sizing: border-box; /* Makes sure padding doesn't mess up widths */
+}
+
+.watchlist-container input{
+  border: none;
+  width: 80%;
+  /* padding: 10px; */
+}
+
+.search-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  flex: 1;
+  padding: 20px 40px;   /* reduced from 40px */
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.dashboard-container {
+  display: flex;
+  height: calc(100vh - 100px); /* Adjust '100px' depending on your TopBar's actual height */
+  width: 100%;
+}
+
+.menus ul{
+    display: flex;          /* makes items in one row */
+    gap: 20px;              /* space between buttons */
+    list-style: none;       /* removes bullet points */
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+.menu{
+    
+    cursor: pointer;
+    color: black;
+}
+
+.Active{
+    color: orange;
+}
+
+.mainDivSummary{
+  padding: 60px 15px;
+}
