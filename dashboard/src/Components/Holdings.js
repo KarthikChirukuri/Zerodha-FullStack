@@ -1,4 +1,5 @@
 import React from 'react';
+import { holdings } from '../Data/Data';
 
 function Holdings() {
     return (
@@ -7,14 +8,14 @@ function Holdings() {
 
                 {/* Heading */}
 
-                <h3>Holdings (13)</h3>
+                <h3>Holdings ({holdings.length})</h3>
 
                 {/* Table */}
 
-                <table className='table mt-4'>
+                <table className='table mt-4 '>
 
-                    <thead>
-                        <tr>
+                    <thead >
+                        <tr className='text-muted'>
                             <th>Instrument</th>
                             <th>Qty.</th>
                             <th>Avg. cost</th>
@@ -28,15 +29,51 @@ function Holdings() {
 
                     <tbody>
 
-                        <tr>
+                        {holdings.map((stock, index) => {
+
+                            const currValue = stock.price * stock.qty;
+
+                            const isProfit =
+                                currValue - stock.avg * stock.qty >= 0;
+
+                            const profClass = isProfit ? "profit" : "loss";
+
+                            const dayClass =
+                                stock.isLoss ? "loss" : "profit";
+
+                            return (
+                                <tr key={index}>
+
+                                    <td>{stock.name}</td>
+                                    <td>{stock.qty}</td>
+                                    <td>{stock.avg.toFixed(2)}</td>
+                                    <td>{stock.price.toFixed(2)}</td>
+                                    <td>{currValue.toFixed(2)}</td>
+                                    <td className={profClass}>
+                                        {(currValue - stock.avg * stock.qty).toFixed(2)}
+                                    </td>
+                                    <td className={profClass}>
+                                        {stock.net}
+                                    </td>
+                                    <td className={dayClass}>
+                                        {stock.day}
+                                    </td>
+                                </tr>
+                            );
+
+                        })}
+
+                        {/* Static Rows */}
+
+                        {/* <tr>
                             <td>SBIN</td>
                             <td>50</td>
                             <td>500</td>
                             <td>560</td>
                             <td>28,000</td>
-                            <td style={{color:"green"}}>3,000</td>
-                            <td style={{color:"green"}}>+5.20%</td>
-                            <td style={{color:"green"}}>+2.10%</td>
+                            <td className='profit'>3,000</td>
+                            <td className='profit'>+5.20%</td>
+                            <td className='profit'>+2.10%</td>
                         </tr>
 
                         <tr>
@@ -45,10 +82,10 @@ function Holdings() {
                             <td>3500</td>
                             <td>3700</td>
                             <td>37,000</td>
-                            <td style={{color:"green"}}>2,000</td>
-                            <td style={{color:"green"}}>+4.50%</td>
-                            <td style={{color:"red"}}>-1.10%</td>
-                        </tr>
+                            <td className='profit'>2,000</td>
+                            <td className='profit'>+4.50%</td>
+                            <td className='loss'>-1.10%</td>
+                        </tr> */}
 
                     </tbody>
 
@@ -69,7 +106,7 @@ function Holdings() {
                     </div>
 
                     <div className='col'>
-                        <h2 style={{color:"green"}}>1,553 (+5.20%)</h2>
+                        <h2 className='profit'>1,553 (+5.20%)</h2>
                         <p className='text-muted'>P&L</p>
                     </div>
 

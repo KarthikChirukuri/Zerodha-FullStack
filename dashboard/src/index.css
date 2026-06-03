@@ -88,14 +88,23 @@ code {
     align-items: center;
 }
 
-.menu{
-    
+.menu{    
     cursor: pointer;
     color: black;
 }
 
 .Active{
     color: orange;
+}
+
+.profit{
+  color: green !important;
+  font-weight: 600;
+}
+
+.loss{
+  color: red !important;
+  font-weight: 600;
 }
 
 .mainDivSummary{

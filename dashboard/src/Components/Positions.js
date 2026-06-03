@@ -1,28 +1,7 @@
 import React from 'react';
+import { positions } from '../Data/Data';
 
 function Positions() {
-
-    const positions = [
-        {
-            product: "CNC",
-            instrument: "SBIN",
-            qty: 50,
-            avg: 500,
-            ltp: 560,
-            pnl: 3000,
-            chg: "+5.20%"
-        },
-
-        {
-            product: "MIS",
-            instrument: "TCS",
-            qty: 10,
-            avg: 3500,
-            ltp: 3700,
-            pnl: -1000,
-            chg: "-2.10%"
-        }
-    ];
 
     return (
         <>
@@ -30,7 +9,7 @@ function Positions() {
 
                 {/* Heading */}
 
-                <h3>Positions (2)</h3>
+                <h3>Positions ({positions.length})</h3>
 
                 {/* Table */}
 
@@ -44,7 +23,8 @@ function Positions() {
                             <th>Avg.</th>
                             <th>LTP</th>
                             <th>P&L</th>
-                            <th>Chg.</th>
+                            <th>Net Chg.</th>
+                            <th>Day Chg.</th>
                         </tr>
                     </thead>
 
@@ -52,39 +32,52 @@ function Positions() {
 
                         {
                             positions.map((position, index) => {
+
+                                const currValue =
+                                    position.price * position.qty;
+
+                                const investedValue =
+                                    position.avg * position.qty;
+
+                                const pnl =
+                                    currValue - investedValue;
+
+                                const profClass =
+                                    pnl >= 0 ? "profit" : "loss";
+
+                                const netClass =
+                                    position.net.includes("+")
+                                        ? "profit"
+                                        : "loss";
+
+                                const dayClass =
+                                    position.isLoss
+                                        ? "loss"
+                                        : "profit";
+
                                 return (
                                     <tr key={index}>
 
                                         <td>{position.product}</td>
 
-                                        <td>{position.instrument}</td>
+                                        <td>{position.name}</td>
 
                                         <td>{position.qty}</td>
 
-                                        <td>{position.avg}</td>
+                                        <td>{position.avg.toFixed(2)}</td>
 
-                                        <td>{position.ltp}</td>
+                                        <td>{position.price.toFixed(2)}</td>
 
-                                        <td
-                                            style={{
-                                                color:
-                                                    position.pnl > 0
-                                                        ? "green"
-                                                        : "red"
-                                            }}
-                                        >
-                                            {position.pnl}
+                                        <td className={profClass}>
+                                            {pnl.toFixed(2)}
                                         </td>
 
-                                        <td
-                                            style={{
-                                                color:
-                                                    position.chg.includes("+")
-                                                        ? "green"
-                                                        : "red"
-                                            }}
-                                        >
-                                            {position.chg}
+                                        <td className={netClass}>
+                                            {position.net}
+                                        </td>
+
+                                        <td className={dayClass}>
+                                            {position.day}
                                         </td>
 
                                     </tr>
