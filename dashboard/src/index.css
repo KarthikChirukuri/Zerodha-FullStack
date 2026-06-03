@@ -1,112 +1,177 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: sans-serif;
+  overflow: hidden;
+  font-size: 13px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* ================= TOPBAR ================= */
 
-.Menu-Container a{
-  margin-right: 20px;
-  color: black;
-  text-decoration: none;
-}
-
-.topbar-container{
+.topbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 30px 10px 30px;
+  height: 62px;
   border-bottom: 1px solid #eee;
 }
 
 .indices-container {
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
   width: 500px;
-  border-right: 2px solid #8a8989;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-right: 1px solid #eee;
+  box-sizing: border-box;
 }
 
-.nifty, .sensex {
+.nifty,
+.sensex {
   display: flex;
-  gap: 8px;
+  gap: 7px;
   align-items: center;
+  font-size: 12px;
+  color: #444;
 }
+
+/* ================= MENU ================= */
 
 .Menu-Container {
   display: flex;
-  gap: 15px;
+  align-items: center;
+  gap: 20px;
+  padding-right: 25px;
 }
 
-.watchlist-container {
-  width: 530px;           
-  min-width: 450px;       
-  border-right: 1px solid #eee; 
-  padding: 20px 40px;
-  height: 100%;
-  box-sizing: border-box; /* Makes sure padding doesn't mess up widths */
+.Menu-Container a {
+  text-decoration: none;
+  color: #444;
+  font-size: 12px;
 }
 
-.watchlist-container input{
-  border: none;
-  width: 80%;
-  /* padding: 10px; */
-}
-
-.search-container{
+.menus ul {
   display: flex;
-  justify-content: space-between;
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
 }
 
-.content {
-  flex: 1;
-  padding: 20px 40px;   /* reduced from 40px */
-  height: 100%;
-  box-sizing: border-box;
-  overflow-y: auto;
+.menu {
+  cursor: pointer;
 }
+
+.Active {
+  color: #ff6a00;
+}
+
+/* ================= DASHBOARD ================= */
 
 .dashboard-container {
   display: flex;
-  height: calc(100vh - 100px); /* Adjust '100px' depending on your TopBar's actual height */
   width: 100%;
+  height: calc(100vh - 62px);
 }
 
-.menus ul{
-    display: flex;          /* makes items in one row */
-    gap: 20px;              /* space between buttons */
-    list-style: none;       /* removes bullet points */
-    padding: 0;
-    margin: 0;
-    align-items: center;
+/* ================= WATCHLIST ================= */
+
+.watchlist-container {
+  width: 500px;
+  border-right: 1px solid #eee;
+  height: 100%;
+  overflow-y: auto;
 }
 
-.menu{    
-    cursor: pointer;
-    color: black;
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 18px;
+  border-bottom: 1px solid #eee;
 }
 
-.Active{
-    color: orange;
+.search {
+  border: none;
+  outline: none;
+  width: 85%;
+  font-size: 12px;
+  color: #555;
 }
 
-.profit{
-  color: green !important;
-  font-weight: 600;
+.counts {
+  color: gray;
+  font-size: 11px;
 }
 
-.loss{
-  color: red !important;
-  font-weight: 600;
+/* ================= WATCHLIST ITEMS ================= */
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.mainDivSummary{
-  padding: 60px 15px;
+.list li {
+  border-bottom: 1px solid #f1f1f1;
+  padding: 13px 18px;
+  cursor: pointer;
+}
+
+.list li:hover {
+  background-color: #fafafa;
+}
+
+.list li div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemInfo {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.itemInfo span {
+  font-size: 11px;
+}
+
+.price {
+  color: #444;
+}
+
+.percent {
+  font-size: 11px;
+}
+
+/* ================= CONTENT ================= */
+
+.content {
+  flex: 1;
+  padding: 22px 32px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  font-size: 13px;
+}
+
+/* ================= COLORS ================= */
+
+.profit {
+  color: #4caf50;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.loss {
+  color: #f44336;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+/* ================= SUMMARY ================= */
+
+.mainDivSummary {
+  padding: 45px 12px;
 }
