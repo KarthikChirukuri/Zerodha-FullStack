@@ -1,7 +1,18 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { watchlist } from "../Data/Data";
-import {Tooltip, grow} from '@mui/material';
-import {KeyboardArrowDown, KeyboardArrowUp} from "@mui/icons-material";
+
+import {
+  Button,
+  Tooltip,
+  Grow,
+} from "@mui/material";
+
+import {
+  BarChartOutlined,
+  KeyboardArrowDown,
+  KeyboardArrowUp,
+  MoreHoriz,
+} from "@mui/icons-material";
 
 function WatchList() {
   return (
@@ -12,13 +23,11 @@ function WatchList() {
       <div className="search-container">
         <input
           type="text"
-          name="search"
-          id="search"
-          placeholder="Search eg:infy, bse, nifty, fut weekly, gold mcx"
+          placeholder="Search eg: infy, bse, nifty..."
           className="search"
         />
 
-        <span className="counts text-muted">
+        <span className="counts">
           {watchlist.length} / 50
         </span>
       </div>
@@ -27,14 +36,12 @@ function WatchList() {
 
       <ul className="list">
         {watchlist.map((stock, index) => {
-        //   return (
-        //     <li key={index} className="list-item">
-        //       {stock.name}
-        //     </li>
-        //   );
-        return(
-            <WatchListItem stock={stock} key={index}></WatchListItem>
-        );
+          return (
+            <WatchListItem
+              stock={stock}
+              key={index}
+            />
+          );
         })}
       </ul>
 
@@ -44,32 +51,112 @@ function WatchList() {
 
 export default WatchList;
 
-// we are writing watch list item here itself becuase here it is tightly coupled with the watchlist as we will not use it any other please so we can write it here. 
-// Or we can write it anywhere like creating new file as we need
+/* ================= WATCHLIST ITEM ================= */
 
-const WatchListItem = ({stock}) =>{
-    const [showWatchListActions, setShowWhatchListActions] = useState(false);
+const WatchListItem = ({ stock }) => {
 
-    const handleMouseEnter = (e) =>{
-        setShowWhatchListActions(true);
-    }
+  const [showActions, setShowActions] = useState(false);
 
-    const handleMouseLeave = (e) => {
-        setShowWhatchListActions(false);
-    }
+  return (
+    <li
+      onMouseEnter={() => setShowActions(true)}
+      onMouseLeave={() => setShowActions(false)}
+    >
 
-    return(
-        <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <div>
-                <p className={stock.isDown ? "loss":"profit"}>{stock.name}</p>
-                <div className="itemInfo">
-                    <span className="percent text-muted">{stock.percent}</span>
-                    {
-                        stock.isDown? (<KeyboardArrowDown className="loss"></KeyboardArrowDown>): (<KeyboardArrowUp className="down"></KeyboardArrowUp>)
-                    }
-                    <span className="price">{stock.price}</span>
-                </div>
-            </div>
-        </li>
-    );
-}
+      <div className="item">
+
+        {/* LEFT */}
+
+        <p className={stock.isDown ? "loss" : "profit"}>
+          {stock.name}
+        </p>
+
+        {/* RIGHT */}
+
+        <div className="itemInfo">
+
+          <span className="percent">
+            {stock.percent}
+          </span>
+
+          {
+            stock.isDown ? (
+              <KeyboardArrowDown className="loss" />
+            ) : (
+              <KeyboardArrowUp className="profit" />
+            )
+          }
+
+          <span className="price">
+            {stock.price}
+          </span>
+
+        </div>
+
+      </div>
+
+      {
+        showActions && (
+          <WatchListActions />
+        )
+      }
+
+    </li>
+  );
+};
+
+/* ================= ACTIONS ================= */
+
+const WatchListActions = () => {
+
+  return (
+
+    <span className="itemActions">
+
+      <Tooltip
+        title="Buy (B)"
+        placement="top"
+        arrow
+        TransitionComponent={Grow}
+      >
+        <Button className="buy">
+          Buy
+        </Button>
+      </Tooltip>
+
+      <Tooltip
+        title="Sell (S)"
+        placement="top"
+        arrow
+        TransitionComponent={Grow}
+      >
+        <Button className="sell">
+          Sell
+        </Button>
+      </Tooltip>
+
+      <Tooltip
+        title="Analytics (A)"
+        placement="top"
+        arrow
+        TransitionComponent={Grow}
+      >
+        <button className="action-icon">
+          <BarChartOutlined className="icon" />
+        </button>
+      </Tooltip>
+
+      <Tooltip
+        title="More"
+        placement="top"
+        arrow
+        TransitionComponent={Grow}
+      >
+        <button className="action-icon">
+          <MoreHoriz className="icon" />
+        </button>
+      </Tooltip>
+
+    </span>
+  );
+};

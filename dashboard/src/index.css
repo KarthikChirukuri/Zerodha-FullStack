@@ -1,3 +1,5 @@
+/* ================= GLOBAL ================= */
+
 body {
   margin: 0;
   font-family: sans-serif;
@@ -18,10 +20,13 @@ body {
 .indices-container {
   width: 500px;
   height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-around;
+
   border-right: 1px solid #eee;
+
   box-sizing: border-box;
 }
 
@@ -83,18 +88,24 @@ body {
   overflow-y: auto;
 }
 
+/* ================= SEARCH ================= */
+
 .search-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 13px 18px;
+
   border-bottom: 1px solid #eee;
 }
 
 .search {
   border: none;
   outline: none;
+
   width: 85%;
+
   font-size: 12px;
   color: #555;
 }
@@ -104,7 +115,7 @@ body {
   font-size: 11px;
 }
 
-/* ================= WATCHLIST ITEMS ================= */
+/* ================= WATCHLIST LIST ================= */
 
 .list {
   list-style: none;
@@ -112,21 +123,48 @@ body {
   padding: 0;
 }
 
+/* ================= WATCHLIST ITEM ================= */
+
 .list li {
   border-bottom: 1px solid #f1f1f1;
-  padding: 13px 18px;
+
+  padding: 12px 16px;
+
   cursor: pointer;
+
+  position: relative;
+
+  transition: background-color 0.2s ease;
 }
 
 .list li:hover {
   background-color: #fafafa;
 }
 
-.list li div {
+.item {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+/* ================= STOCK NAME ================= */
+
+.profit,
+.loss {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.profit {
+  color: #4caf50 !important;
+}
+
+.loss {
+  color: #f44336 !important;
+}
+
+/* ================= ITEM INFO ================= */
 
 .itemInfo {
   display: flex;
@@ -138,36 +176,100 @@ body {
   font-size: 11px;
 }
 
+.percent {
+  color: #888;
+}
+
 .price {
   color: #444;
 }
 
-.percent {
-  font-size: 11px;
+/* ================= ACTIONS ================= */
+
+.itemActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 10px;
+}
+
+/* ================= BUY BUTTON ================= */
+
+.buy {
+  background-color: #4184f3 !important;
+
+  color: white !important;
+
+  font-size: 10px !important;
+
+  min-width: 45px !important;
+
+  padding: 4px 10px !important;
+
+  text-transform: none !important;
+
+  border-radius: 4px !important;
+}
+
+/* ================= SELL BUTTON ================= */
+
+.sell {
+  background-color: #ff5722 !important;
+
+  color: white !important;
+
+  font-size: 10px !important;
+
+  min-width: 45px !important;
+
+  padding: 4px 10px !important;
+
+  text-transform: none !important;
+
+  border-radius: 4px !important;
+}
+
+/* ================= ICON BUTTONS ================= */
+
+.action-icon {
+  border: none;
+
+  background: #f5f5f5;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-icon:hover {
+  background-color: #eaeaea;
+}
+
+.icon {
+  font-size: 18px !important;
+  color: #666;
 }
 
 /* ================= CONTENT ================= */
 
 .content {
   flex: 1;
+
   padding: 22px 32px;
+
   overflow-y: auto;
+
   box-sizing: border-box;
+
   font-size: 13px;
-}
-
-/* ================= COLORS ================= */
-
-.profit {
-  color: #4caf50;
-  font-weight: 500;
-  font-size: 12px;
-}
-
-.loss {
-  color: #f44336;
-  font-weight: 500;
-  font-size: 12px;
 }
 
 /* ================= SUMMARY ================= */
