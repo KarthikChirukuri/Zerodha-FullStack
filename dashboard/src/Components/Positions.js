@@ -1,7 +1,17 @@
-import React from 'react';
-import { positions } from '../Data/Data';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+// import { positions } from '../Data/Data';
 
 function Positions() {
+
+    const [allPostings, setAllPostings]= useState([]);
+
+    useEffect(()=>{
+        axios.get("http://localhost:8080/fetchPositions").then((res)=>{
+            console.log(res.data);
+            setAllPostings(res.data);
+        });
+    }, [])
 
     return (
         <>
@@ -9,7 +19,7 @@ function Positions() {
 
                 {/* Heading */}
 
-                <h3>Positions ({positions.length})</h3>
+                <h3>Positions ({allPostings.length})</h3>
 
                 {/* Table */}
 
@@ -31,7 +41,7 @@ function Positions() {
                     <tbody>
 
                         {
-                            positions.map((position, index) => {
+                            allPostings.map((position, index) => {
 
                                 const currValue =
                                     position.price * position.qty;

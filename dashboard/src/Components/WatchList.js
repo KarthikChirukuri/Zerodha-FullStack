@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { watchlist } from "../Data/Data";
+import BuyWindow from '../Components/BuyWindow';
 
 import {
   Button,
@@ -97,7 +98,7 @@ const WatchListItem = ({ stock }) => {
 
       {
         showActions && (
-          <WatchListActions />
+          <WatchListActions details={stock}/>
         )
       }
 
@@ -107,7 +108,9 @@ const WatchListItem = ({ stock }) => {
 
 /* ================= ACTIONS ================= */
 
-const WatchListActions = () => {
+const WatchListActions = ({details}) => {
+
+  const [showPopup, setShowPopup] = useState(false);
 
   return (
 
@@ -119,7 +122,7 @@ const WatchListActions = () => {
         arrow
         TransitionComponent={Grow}
       >
-        <Button className="buy">
+        <Button className="buy" onClick={()=>{setShowPopup(true)}}>
           Buy
         </Button>
       </Tooltip>
@@ -156,6 +159,10 @@ const WatchListActions = () => {
           <MoreHoriz className="icon" />
         </button>
       </Tooltip>
+
+
+      {/* {showPopup && <BuyWindow />} */}
+      {showPopup && <BuyWindow setShowPopup={setShowPopup} name={details.name} />}
 
     </span>
   );

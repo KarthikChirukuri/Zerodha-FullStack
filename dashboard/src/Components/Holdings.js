@@ -1,14 +1,25 @@
-import React from 'react';
-import { holdings } from '../Data/Data';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+// import { holdings } from '../Data/Data';
 
 function Holdings() {
+
+    const [allHoldings, setAllHoldings] = useState([]);
+
+    useEffect(()=>{
+        axios.get("http://localhost:8080/fetchHoldings").then((res)=>{
+            console.log(res.data);
+            setAllHoldings(res.data);
+        });
+    }, []);
+
     return (
         <>
             <div className='container mt-5'>
 
                 {/* Heading */}
 
-                <h3>Holdings ({holdings.length})</h3>
+                <h3>Holdings ({allHoldings.length})</h3>
 
                 {/* Table */}
 
@@ -29,7 +40,7 @@ function Holdings() {
 
                     <tbody>
 
-                        {holdings.map((stock, index) => {
+                        {allHoldings.map((stock, index) => {
 
                             const currValue = stock.price * stock.qty;
 
