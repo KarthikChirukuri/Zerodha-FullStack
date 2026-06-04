@@ -12,6 +12,7 @@ public class Holdings {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Integer qty;
     private double avg;
     private double price;
