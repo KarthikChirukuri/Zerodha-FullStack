@@ -20,5 +20,10 @@ public class ordersController {
     public String newOrders(@RequestBody OrderDTO dto) {
         return service.storeOrder(dto);
     }
+
+    @PostMapping("/sellOrders")
+    public String sellOrders(@RequestBody OrderDTO dto) {
+        return service.storeOrder(dto);
+    }
     
 }

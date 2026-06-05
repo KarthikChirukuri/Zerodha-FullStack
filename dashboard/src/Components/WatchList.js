@@ -14,6 +14,7 @@ import {
   KeyboardArrowUp,
   MoreHoriz,
 } from "@mui/icons-material";
+import SellWindow from "./SellWindow";
 
 function WatchList() {
   return (
@@ -111,6 +112,7 @@ const WatchListItem = ({ stock }) => {
 const WatchListActions = ({details}) => {
 
   const [showPopup, setShowPopup] = useState(false);
+  const [showSellPopUp, setShowSellPopUp] = useState(false);
 
   return (
 
@@ -133,7 +135,7 @@ const WatchListActions = ({details}) => {
         arrow
         TransitionComponent={Grow}
       >
-        <Button className="sell">
+        <Button className="sell" onClick={(()=>setShowSellPopUp(true))}>
           Sell
         </Button>
       </Tooltip>
@@ -163,6 +165,7 @@ const WatchListActions = ({details}) => {
 
       {/* {showPopup && <BuyWindow />} */}
       {showPopup && <BuyWindow setShowPopup={setShowPopup} name={details.name} />}
+      {showSellPopUp && <SellWindow setShowSellPopUp={setShowSellPopUp} name={details.name} />}
 
     </span>
   );
