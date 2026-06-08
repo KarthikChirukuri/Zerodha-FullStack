@@ -7,8 +7,10 @@ function Positions() {
     const [allPostings, setAllPostings]= useState([]);
 
     useEffect(()=>{
-        axios.get("http://localhost:8080/fetchPositions").then((res)=>{
-            console.log(res.data);
+        axios.get("http://localhost:8080/fetchPositions", {withCredentials:true}).then((res)=>{
+            console.log("DATA:", res.data);
+            console.log("TYPE:", typeof res.data);
+            console.log("IS ARRAY:", Array.isArray(res.data));
             setAllPostings(res.data);
         });
     }, [])
@@ -41,7 +43,7 @@ function Positions() {
                     <tbody>
 
                         {
-                            allPostings.map((position, index) => {
+                            Array.isArray(allPostings) && allPostings.map((position, index) => {
 
                                 const currValue =
                                     position.price * position.qty;
