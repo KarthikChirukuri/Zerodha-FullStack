@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
+//This is normal ease purpose main login page will be the frontend code itself this is just for the ease access
+
 function Login() {
 
     const [username, setUsername] = useState("");
