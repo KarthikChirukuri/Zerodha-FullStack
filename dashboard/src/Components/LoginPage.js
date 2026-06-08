@@ -29,7 +29,7 @@ function Login() {
             // alert("Login Success");
             // navigate("/");
             setTimeout(() => {
-                navigate("/positions");
+                navigate("/");
             }, 500);
         } catch (error) {
             alert("Login Failed");

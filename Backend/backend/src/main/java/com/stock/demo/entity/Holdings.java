@@ -13,6 +13,7 @@ public class Holdings {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
     private Integer qty;
     private double avg;
     private double price;
