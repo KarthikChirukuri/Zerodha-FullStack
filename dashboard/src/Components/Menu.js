@@ -48,8 +48,13 @@ const activeMenuClass = "Active";
             </Link>
         </li>
         <li>
-          <Link to={"/apps"} style={{textDecoration:"none"}} onClick={()=>handleMenuClick(5)}>
-              <p className={selectedMenu===5?activeMenuClass:menuClass}>Apps</p>
+          <Link to={"/Livemarket"} style={{textDecoration:"none"}} onClick={()=>handleMenuClick(5)}>
+              <p className={selectedMenu===5?activeMenuClass:menuClass}>Live API</p>
+            </Link>
+        </li>
+        <li>
+          <Link to={"/apps"} style={{textDecoration:"none"}} onClick={()=>handleMenuClick(6)}>
+              <p className={selectedMenu===6?activeMenuClass:menuClass}>Apps</p>
             </Link>
         </li>
         </ul>

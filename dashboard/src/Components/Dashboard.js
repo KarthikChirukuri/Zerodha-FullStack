@@ -7,6 +7,7 @@ import Holdings from './Holdings';
 import Positions from './Positions';
 import Funds from './Funds';
 import Apps from './Apps';
+import LiveMarket from './LiveMarket';
 
 function Dashboard() {
     return ( 
@@ -21,6 +22,7 @@ function Dashboard() {
                             <Route path='/positions' element={<Positions></Positions>}></Route>
                             <Route path='/funds' element={<Funds></Funds>}></Route>
                             <Route path='/apps' element={<Apps></Apps>}></Route>
+                            <Route path='/Livemarket' element={<LiveMarket></LiveMarket>}/> 
                         </Routes>
                 </div>
             </div>
