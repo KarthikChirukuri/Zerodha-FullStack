@@ -27,7 +27,7 @@ public class SecurityConfig {
         UserDetails user1 = User.withUsername("Karthik").password(passwordEncoder().encode("1234")).build();
         UserDetails user2 = User.withUsername("NTR").password(passwordEncoder().encode("1234")).roles("USER").build();
         UserDetails user3 = User.withUsername("user").password(passwordEncoder().encode("1234")).roles("USER").build();
-        return new InMemoryUserDetailsManager(user1, user2);
+        return new InMemoryUserDetailsManager(user1, user2, user3);
     }
 
     @Bean
